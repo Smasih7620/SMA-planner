@@ -8,6 +8,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: unzip -q "$(ls *.zip | head -1)" -d src
+      - run: printf "android.useAndroidX=true\norg.gradle.jvmargs=-Xmx2g\n" > gradle.properties
+        working-directory: src/Planner
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
